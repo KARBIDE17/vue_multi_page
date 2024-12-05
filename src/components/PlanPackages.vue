@@ -53,48 +53,17 @@
   </template>
   
   <script>
-  /* import { gsap } from "gsap";
-  import { SplitText } from "gsap/SplitText";
 
-  gsap.registerPlugin(SplitText);
- */
  export default {
   mounted() {
     console.log("PlanPackages mounted");
-    this.$nextTick(() => {
-      // Select all "Choose Plan" buttons
-      const selectPlanButtons = document.querySelectorAll('.plan button');
-      console.dir(selectPlanButtons);
-      const backdrop = document.querySelector('.backdrop');
-
-      for(var i = 0; i < selectPlanButtons.length; i++) {
-        selectPlanButtons[i].addEventListener('click', function() {
-          backdrop.style.display = 'block';
-        })
-      }
-      
-      
-      
-    });
-  },
+  }
 };
 
-
-  /* const textElement = document.querySelector(".plan--highlighted.plan__price")
-
-  const splitText = new SplitText(textElement, { type: "chars" });
-  
-  gsap.from(splitText.chars, {
-  duration: 1, // Duration of the animation
-  opacity: 0,  // Start opacity
-  y: 20,       // Start position (20px below original position)
-  stagger: 0.1 // Delay between each character's animation 
-});
- */ 
   </script>
   
   <style scoped>
-  /* Retain only styles relevant to the main content */
+  
   main {
     width: 100%;
     height: 100vh;

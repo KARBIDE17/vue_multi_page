@@ -48,13 +48,13 @@ const fetchGifs = async () => {
   if (response.data.data.length === 0) {
     console.log("No gifs returned from api");
   } else {
-    definitions.value = response.data.data; // Use definitions to store GIFs
+    definitions.value = response.data.data; 
   }
 
 };
 
 onMounted(() => {
-  fetchGifs(); // Fetch on component mount
+  fetchGifs(); 
 });
 </script>
 

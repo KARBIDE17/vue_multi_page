@@ -6,7 +6,7 @@
     .modal
       h1.modal__title This feature is coming soon!
       .modal__actions
-        .modal__action Back to home Page
+        .modal__action CLICK ANYWHERE TO RETURN
     //- Main Navigation
     nav.main-nav
       img(src="./assets/burger.png").burger
@@ -52,12 +52,17 @@ export default {
     const modal = document.querySelector('.modal');
     const backdrop = document.querySelector('.backdrop');
     const startHosting = document.querySelectorAll('.main-nav .main-nav__item.main-nav__item--cta');
+    const startHostingMobile = document.querySelectorAll('.mobile-nav .mobile-nav__item.mobile-nav__item--cta');
     const closeModal = document.querySelector('.modal__action');
     const burger = document.querySelector('.burger');
-    const mobileNav =document.querySelector('.mobile-nav');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavItem = document.querySelectorAll('.mobile-nav__item');
 
-    
-
+    mobileNavItem.forEach(item => {
+      item.addEventListener('click', function() {
+        mobileNav.style.display = 'none';
+      });
+    });  
     burger.addEventListener('click', function() {
       if (mobileNav.style.display === 'block') {
         mobileNav.style.display = 'none';
@@ -65,23 +70,30 @@ export default {
         mobileNav.style.display = 'block';
       }
      });
-    // Open modal and backdrop
+    
     startHosting[0].addEventListener('click', () => {
       backdrop.style.display = 'block';
       modal.style.display = 'block';
     });
 
-    // Close modal and backdrop when clicking on backdrop
+    startHostingMobile.forEach(link => {
+      link.addEventListener('click', () => {
+        backdrop.style.display = 'block';
+        modal.style.display = 'block';
+      });
+    });
+
+    
     backdrop.addEventListener('click', () => {
       backdrop.style.display = 'none';
       modal.style.display = 'none';
       mobileNav.style.display = 'none';
       if (this.$router) {
-        this.$router.push('/'); // Route to PlanPackages
+        this.$router.push('/');
       }
     });
 
-    // Close modal and backdrop when clicking on modal
+    // Close modal and backdrop when clicking
     modal.addEventListener('click', () => {
       backdrop.style.display = 'none';
       modal.style.display = 'none';
@@ -192,8 +204,6 @@ body, #app {
 }
 
 .modal__action {
-  border: 1px solid #000000;
-  background: #000000;
   text-decoration: none;
   color: white;
   font: inherit;
