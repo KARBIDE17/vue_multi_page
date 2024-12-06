@@ -35,12 +35,11 @@ import axios from 'axios';
 // Create a ref to store the user input
 const userInput = ref('');
 const definitions = ref([]); // Ensure it's an array
-const apiKey = 'YIkJt6RpwoazN3twApE0PMkLcCPOju3U';
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const fetchGifs = async () => {
   // Clear previous definitions before fetching new data
   definitions.value = []; 
-
   // Use user input as the search term
   const searchTerm = userInput.value || 'funny'; // Fallback to 'funny' if no input
   const response = await axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&limit=1`);
